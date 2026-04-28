@@ -1,0 +1,48 @@
+name: Lints
+
+on:
+    workflow_call:
+
+jobs:
+    backend-typecheck:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: backend
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: oven-sh/setup-bun@v1
+              with:
+                  bun-version: latest
+
+            - run: bun install
+            - run: bun run typecheck
+
+    frontend-typecheck:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: frontend
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: oven-sh/setup-bun@v1
+              with:
+                  bun-version: latest
+
+            - run: bun install
+            - run: bun run typecheck
+
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: oven-sh/setup-bun@v1
+              with:
+                  bun-version: latest
+
+            - run: bun install && bun run setup
+            - run: bun run format:check
+            - run: bun run lint

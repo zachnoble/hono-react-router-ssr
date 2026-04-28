@@ -1,0 +1,17 @@
+name: PR Checks
+
+on:
+    pull_request:
+        branches:
+            - main
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    lints:
+        uses: ./.github/workflows/lints.yml
+
+    build-containers:
+        uses: ./.github/workflows/build-containers.yml
