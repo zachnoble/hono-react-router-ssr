@@ -1,0 +1,44 @@
+name: Typecheck
+
+on:
+    workflow_call:
+        inputs:
+            run_frontend:
+                type: string
+                default: 'true'
+            run_backend:
+                type: string
+                default: 'true'
+
+jobs:
+    backend:
+        if: inputs.run_backend == 'true'
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: backend
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+
+            - run: bun install --frozen-lockfile
+            - run: bun run typecheck
+
+    frontend:
+        if: inputs.run_frontend == 'true'
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: frontend
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+
+            - run: bun install --frozen-lockfile
+            - run: bun run typecheck

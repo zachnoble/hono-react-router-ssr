@@ -1,0 +1,20 @@
+{
+	"name": "hono-react-router-ssr",
+	"scripts": {
+		"prepare": "lefthook install",
+		"setup": "concurrently -n backend,frontend -c cyan,magenta \"bun run setup:backend\" \"bun run setup:frontend\"",
+		"setup:backend": "cd backend && bun install",
+		"setup:frontend": "cd frontend && bun install",
+		"lint": "oxlint .",
+		"lint:fix": "oxlint --fix-dangerously .",
+		"format": "oxfmt .",
+		"format:check": "oxfmt --check ."
+	},
+	"devDependencies": {
+		"concurrently": "^9.2.1",
+		"lefthook": "^2.1.6",
+		"oxfmt": "^0.47.0",
+		"oxlint": "^1.62.0",
+		"oxlint-tsgolint": "^0.22.1"
+	}
+}

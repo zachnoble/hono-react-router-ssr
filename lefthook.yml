@@ -1,0 +1,20 @@
+pre-commit:
+    parallel: true
+    commands:
+        typecheck-backend:
+            glob: 'backend/**/*.{ts,js,json}'
+            run: bun run --cwd backend typecheck
+
+        typecheck-frontend:
+            glob: 'frontend/**/*.{ts,tsx,js,json}'
+            run: bun run --cwd frontend typecheck
+
+        lint:
+            glob: '**/*.{ts,tsx,js}'
+            run: bun run oxlint --fix-dangerously {staged_files}
+            stage_fixed: true
+
+        format:
+            glob: '*.{yml,yaml,json,ts,js,tsx,mjs,cjs,css,html}'
+            run: bun run oxfmt {staged_files}
+            stage_fixed: true
