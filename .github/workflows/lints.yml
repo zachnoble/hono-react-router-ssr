@@ -1,0 +1,18 @@
+name: Lints
+
+on:
+    workflow_call:
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+
+            - run: bun install --frozen-lockfile && bun run setup
+            - run: bun run format:check
+            - run: bun run lint

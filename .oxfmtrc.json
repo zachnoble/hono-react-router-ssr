@@ -1,0 +1,29 @@
+{
+	"printWidth": 100,
+	"useTabs": true,
+	"tabWidth": 4,
+	"singleQuote": true,
+	"jsxSingleQuote": true,
+	"semi": false,
+	"arrowParens": "always",
+	"bracketSpacing": true,
+	"bracketSameLine": false,
+	"sortTailwindcss": {
+		"functions": ["clsx", "cn"]
+	},
+	"sortImports": {
+		"groups": [
+			["type-builtin", "value-builtin", "type-external", "value-external"],
+			[
+				"type-internal",
+				"value-internal",
+				"type-parent",
+				"value-parent",
+				"type-sibling",
+				"value-sibling",
+				"type-index",
+				"value-index"
+			]
+		]
+	}
+}

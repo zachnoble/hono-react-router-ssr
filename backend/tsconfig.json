@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"lib": ["ESNext"],
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"strict": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"noUncheckedIndexedAccess": true,
+		"paths": {
+			"~/*": ["./src/*"]
+		},
+		"incremental": true,
+		"tsBuildInfoFile": ".tsbuildinfo"
+	}
+}
